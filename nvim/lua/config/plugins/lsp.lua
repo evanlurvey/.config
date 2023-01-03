@@ -12,7 +12,7 @@ return {
 
         local servers = {
             svelte = {},
-            go = {},
+            gopls = {},
             sumneko_lua = {
                 single_file_support = true,
                 settings = {
