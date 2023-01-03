@@ -9,6 +9,7 @@ return {
         { "<leader>tt", "<cmd>NvimTreeToggle<CR>" },
         { "<leader>tf", "<cmd>NvimTreeFocus<CR>" },
         { "<leader>t.", "<cmd>NvimTreeFindFile<CR>" },
+        { "<leader>tr", "<cmd>NvimTreeRefresh<CR>" },
     },
     config = {},
 }
