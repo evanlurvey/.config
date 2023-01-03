@@ -1,11 +1,14 @@
 window: 
+  padding:
+    x: 5
+    y: 5
   dimensions:
     columns: 130
     lines: 40
   opacity: 0.95
 
 font:
-  size: 16
+  size: 14
 
   normal:
     family: SpaceMono Nerd Font Mono

@@ -1,26 +1,20 @@
-local M = {
+return {
     "folke/tokyonight.nvim",
     lazy = false,
-    priority = 999,
+    priority = 1000,
+    config = function()
+        local tokyonight = require("tokyonight")
+
+        tokyonight.setup({
+            style = "moon",
+            transparent = true,
+            on_highlights = function(hl, c)
+                hl.LineNr = { fg = c.orange }
+            end,
+        })
+
+        tokyonight.load()
+    end,
+
 }
 
-function M.config()
-    local tokyonight = require("tokyonight")
-
-    tokyonight.setup({
-        style = "moon",
-        transparent = true,
-
-        on_highlights = function(hl, c)
-            hl.LineNr = {
-                fg = c.orange,
-                bold = true
-            }
-        end
-    })
-
-    tokyonight.load()
-end
-
-
-return M
