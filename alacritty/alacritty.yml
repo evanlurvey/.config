@@ -1,0 +1,27 @@
+window: 
+  dimensions:
+    columns: 130
+    lines: 40
+  opacity: 0.95
+
+font:
+  size: 16
+
+  normal:
+    family: SpaceMono Nerd Font Mono
+    style: Regular
+
+  bold:
+    family: SpaceMono Nerd Font Mono
+    style: Bold
+
+  italic:
+    family: SpaceMono Nerd Font Mono
+    style: Italic
+
+  bold_italic:
+    family: SpaceMono Nerd Font Mono
+    style: Bold Italic
+
+key_bindings:
+  - { key: N, mods: Command, action: CreateNewWindow }
