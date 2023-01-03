@@ -32,9 +32,9 @@ function M.config()
     require("mason").setup()
 
     require("mason-lspconfig").setup({
-        automatic_installation = true, 
+        automatic_installation = true,
     })
-end 
+end
 
 return {
     M,

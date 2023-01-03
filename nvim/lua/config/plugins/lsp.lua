@@ -65,6 +65,7 @@ return {
 
         local function on_attach(client, bufnr)
             vim.keymap.set('n', "<leader>gd", vim.lsp.buf.definition, { buffer = bufnr, desc = "LSP: Go to definition" })
+            vim.keymap.set('n', "K", vim.lsp.buf.hover, { buffer = bufnr, desc = "LSP: Peep definition" })
             vim.keymap.set('n', "<leader>gtd", vim.lsp.buf.type_definition, { buffer = bufnr, desc = "LSP: Go to type definition" })
             vim.keymap.set('n', "<leader>gi", vim.lsp.buf.implementation, { buffer = bufnr, desc = "LSP: Go to implementation" })
             vim.keymap.set('n', "<leader>r", vim.lsp.buf.rename, { buffer = bufnr, desc = "LSP: Rename" })
