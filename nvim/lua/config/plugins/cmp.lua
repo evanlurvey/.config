@@ -103,8 +103,30 @@ return {
             })
 
             -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
+            -- This should fix tab not workin in cmd with lsp on
             cmp.setup.cmdline({ '/', '?' }, {
-                mapping = cmp.mapping.preset.cmdline(),
+                mapping = cmp.mapping.preset.cmdline({
+                    ["<Tab>"] = {
+                        c = function (fallback)
+                            local cmp = require('cmp')
+                            if cmp.visible() then
+                                cmp.select_next_item()
+                            else
+                                fallback()
+                            end
+                        end
+                    },
+                    ["<S-Tab>"] = {
+                        c = function (fallback)
+                            local cmp = require('cmp')
+                            if cmp.visible() then
+                                cmp.select_prev_item()
+                            else
+                                fallback()
+                            end
+                        end
+                    },
+                }),
                 sources = {
                     { name = 'buffer' }
                 }

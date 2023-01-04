@@ -29,3 +29,17 @@ vim.opt.colorcolumn = "120"
 vim.opt.winbar = "%f %m"
 vim.opt.laststatus = 3
 
+-- LSP / Diagnostics 
+local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
+
+vim.diagnostic.config({
+    underline = true,
+    update_in_insert = false,
+    virtual_text = { spacing = 4, prefix = "●" },
+    severity_sort = true,
+})
+
+for type, icon in pairs(signs) do
+    local hl = "DiagnosticSign" .. type
+    vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
+end

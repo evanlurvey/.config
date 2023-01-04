@@ -38,4 +38,9 @@ vim.keymap.set("t", "<Esc>", [[<C-\><C-n>]])
 vim.keymap.set("n", "==", "mTgg^=G`T")
 
 
+-- Diagnostics 
+vim.keymap.set("n", "<leader>dn", vim.diagnostic.goto_next)
+vim.keymap.set("n", "<leader>dp", vim.diagnostic.goto_prev)
+vim.keymap.set("n", "<leader>dl", "<cmd>Telescope diagnostics<cr>")
+
 
