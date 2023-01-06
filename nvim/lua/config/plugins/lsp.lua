@@ -8,7 +8,6 @@ return {
 
     config = function()
         require("mason")
-        require("config.plugins.lsp.diagnostics").setup()
 
         local servers = {
             svelte = {},
