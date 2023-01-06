@@ -65,14 +65,15 @@ return {
         }
 
         local function on_attach(client, bufnr)
-            vim.keymap.set('n', "<leader>gd", vim.lsp.buf.definition, { buffer = bufnr, desc = "LSP: Go to definition" })
+            vim.keymap.set('n', "gd", vim.lsp.buf.definition, { buffer = bufnr, desc = "LSP: Go to definition" })
             vim.keymap.set('n', "K", vim.lsp.buf.hover, { buffer = bufnr, desc = "LSP: Peep definition" })
-            vim.keymap.set('n', "<leader>gtd", vim.lsp.buf.type_definition, { buffer = bufnr, desc = "LSP: Go to type definition" })
-            vim.keymap.set('n', "<leader>gi", vim.lsp.buf.implementation, { buffer = bufnr, desc = "LSP: Go to implementation" })
+            vim.keymap.set('n', "gtd", vim.lsp.buf.type_definition, { buffer = bufnr, desc = "LSP: Go to type definition" })
+            vim.keymap.set('n', "gi", vim.lsp.buf.implementation, { buffer = bufnr, desc = "LSP: Go to implementation" })
             vim.keymap.set('n', "<leader>r", vim.lsp.buf.rename, { buffer = bufnr, desc = "LSP: Rename" })
             vim.keymap.set('n', "<leader>.", vim.lsp.buf.code_action, { buffer = bufnr, desc = "LSP: Code Action" })
-            vim.keymap.set('n', "<leader>gr", require('telescope.builtin').lsp_references, { buffer = bufnr, desc = "LSP: Go to references" })
-            vim.keymap.set('n', "<leader>ps", require('telescope.builtin').lsp_dynamic_workspace_symbols, { buffer = bufnr, desc = "LSP: Go to references" })
+            vim.keymap.set('n', "gr", require('telescope.builtin').lsp_references, { buffer = bufnr, desc = "LSP: Go to references" })
+            vim.keymap.set('n', "<leader>ps", require('telescope.builtin').lsp_dynamic_workspace_symbols, { buffer = bufnr, desc = "LSP: search symbols" })
+            vim.keymap.set('n', "<leader>s", require('telescope.builtin').lsp_document_symbols, { buffer = bufnr, desc = "LSP: search symbols" })
         end
 
         local capabilities = vim.lsp.protocol.make_client_capabilities()
