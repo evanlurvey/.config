@@ -43,4 +43,6 @@ vim.keymap.set("n", "<leader>dn", vim.diagnostic.goto_next)
 vim.keymap.set("n", "<leader>dp", vim.diagnostic.goto_prev)
 vim.keymap.set("n", "<leader>dl", "<cmd>Telescope diagnostics<cr>")
 
+vim.keymap.set("n", "L", "<cmd>bnext<CR>")
+vim.keymap.set("n", "H", "<cmd>bprevious<CR>")
 
