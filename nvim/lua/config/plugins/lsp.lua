@@ -223,6 +223,7 @@ return {
 					formatting.jq,
 					formatting.stylua,
 					formatting.black,
+					formatting.rustywind,
 				},
 			})
 		end,
