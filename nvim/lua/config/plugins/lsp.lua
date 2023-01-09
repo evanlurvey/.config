@@ -25,6 +25,7 @@ return {
 			local servers = {
 				svelte = {},
 				gopls = {},
+				tsserver = {},
 				rust_analyzer = {},
 				sumneko_lua = {
 					single_file_support = true,
