@@ -83,7 +83,7 @@ return {
 				vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = bufnr, desc = "LSP: Peep definition" })
 				vim.keymap.set(
 					"n",
-					"gtd",
+					"gt",
 					vim.lsp.buf.type_definition,
 					{ buffer = bufnr, desc = "LSP: Go to type definition" }
 				)
@@ -103,7 +103,7 @@ return {
 				)
 				vim.keymap.set(
 					"n",
-					"<leader>ps",
+					"<leader>S",
 					require("telescope.builtin").lsp_dynamic_workspace_symbols,
 					{ buffer = bufnr, desc = "LSP: search workspace symbols" }
 				)
