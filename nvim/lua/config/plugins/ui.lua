@@ -26,4 +26,10 @@ return {
 			})
 		end,
 	},
+	{
+		"folke/todo-comments.nvim",
+        cmd = {"TodoTelescope", "TodoQuickFix"},
+		event = "BufEnter",
+		config = {},
+	},
 }
