@@ -1,10 +1,58 @@
+local function on_attach(client, bufnr)
+	vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = bufnr, desc = "LSP: Go to definition" })
+	vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = bufnr, desc = "LSP: Peep definition" })
+	vim.keymap.set("n", "gt", vim.lsp.buf.type_definition, { buffer = bufnr, desc = "LSP: Go to type definition" })
+	vim.keymap.set("n", "gi", vim.lsp.buf.implementation, { buffer = bufnr, desc = "LSP: Go to implementation" })
+	vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename, { buffer = bufnr, desc = "LSP: Rename" })
+	vim.keymap.set("n", "<leader>.", vim.lsp.buf.code_action, { buffer = bufnr, desc = "LSP: Code Action" })
+	vim.keymap.set(
+		"n",
+		"gr",
+		require("telescope.builtin").lsp_references,
+		{ buffer = bufnr, desc = "LSP: Go to references" }
+	)
+	vim.keymap.set(
+		"n",
+		"<leader>S",
+		require("telescope.builtin").lsp_dynamic_workspace_symbols,
+		{ buffer = bufnr, desc = "LSP: search workspace symbols" }
+	)
+	vim.keymap.set(
+		"n",
+		"<leader>s",
+		require("telescope.builtin").lsp_document_symbols,
+		{ buffer = bufnr, desc = "LSP: search document symbols" }
+	)
+end
+
 return {
 	{
 		"williamboman/mason.nvim",
 		cmd = { "Mason" },
 		config = {},
 	},
+	{
+		"simrat39/rust-tools.nvim",
+        event = "VeryLazy",
+		config = {
+			tools = {
+				runnables = {
+					use_telescope = true,
+				},
+				inlay_hints = {
+					auto = true,
+					show_parameter_hints = true,
+				},
+			},
 
+			server = {
+				on_attach = on_attach,
+				settings = {
+					["rust-analyzer"] = {},
+				},
+			},
+		},
+	},
 	-- Nvim LSP
 	{
 		"neovim/nvim-lspconfig",
@@ -26,7 +74,22 @@ return {
 				svelte = {},
 				gopls = {},
 				tsserver = {},
-				rust_analyzer = {},
+				-- rust_analyzer = {
+				-- 	imports = {
+				-- 		granularity = {
+				-- 			group = "module",
+				-- 		},
+				-- 		prefix = "self",
+				-- 	},
+				-- 	cargo = {
+				-- 		buildScripts = {
+				-- 			enable = true,
+				-- 		},
+				-- 	},
+				-- 	procMacro = {
+				-- 		enable = true,
+				-- 	},
+				-- },
 				sumneko_lua = {
 					single_file_support = true,
 					settings = {
@@ -77,43 +140,6 @@ return {
 					},
 				},
 			}
-
-			local function on_attach(client, bufnr)
-				vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = bufnr, desc = "LSP: Go to definition" })
-				vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = bufnr, desc = "LSP: Peep definition" })
-				vim.keymap.set(
-					"n",
-					"gt",
-					vim.lsp.buf.type_definition,
-					{ buffer = bufnr, desc = "LSP: Go to type definition" }
-				)
-				vim.keymap.set(
-					"n",
-					"gi",
-					vim.lsp.buf.implementation,
-					{ buffer = bufnr, desc = "LSP: Go to implementation" }
-				)
-				vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename, { buffer = bufnr, desc = "LSP: Rename" })
-				vim.keymap.set("n", "<leader>.", vim.lsp.buf.code_action, { buffer = bufnr, desc = "LSP: Code Action" })
-				vim.keymap.set(
-					"n",
-					"gr",
-					require("telescope.builtin").lsp_references,
-					{ buffer = bufnr, desc = "LSP: Go to references" }
-				)
-				vim.keymap.set(
-					"n",
-					"<leader>S",
-					require("telescope.builtin").lsp_dynamic_workspace_symbols,
-					{ buffer = bufnr, desc = "LSP: search workspace symbols" }
-				)
-				vim.keymap.set(
-					"n",
-					"<leader>s",
-					require("telescope.builtin").lsp_document_symbols,
-					{ buffer = bufnr, desc = "LSP: search document symbols" }
-				)
-			end
 
 			local capabilities = vim.lsp.protocol.make_client_capabilities()
 			capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)

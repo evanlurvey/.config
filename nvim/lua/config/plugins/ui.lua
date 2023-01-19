@@ -28,8 +28,22 @@ return {
 	},
 	{
 		"folke/todo-comments.nvim",
-        cmd = {"TodoTelescope", "TodoQuickFix"},
+		cmd = { "TodoTelescope", "TodoQuickFix" },
 		event = "BufEnter",
+		config = {},
+	},
+	-- {
+	-- 	"folke/noice.nvim",
+	--        event = "VeryLazy",
+	-- 	dependencies = {
+	-- 		"MunifTanjim/nui.nvim",
+	-- 		"rcarriga/nvim-notify",
+	-- 	},
+	--        config = {},
+	-- },
+	{
+		"j-hui/fidget.nvim",
+		event = "VeryLazy",
 		config = {},
 	},
 }
