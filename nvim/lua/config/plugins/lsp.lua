@@ -74,6 +74,7 @@ return {
 				svelte = {},
 				gopls = {},
 				tsserver = {},
+                tailwindcss = {},
 				-- rust_analyzer = {
 				-- 	imports = {
 				-- 		granularity = {
