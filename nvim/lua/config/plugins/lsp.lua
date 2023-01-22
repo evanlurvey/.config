@@ -33,7 +33,7 @@ return {
 	},
 	{
 		"simrat39/rust-tools.nvim",
-        event = "VeryLazy",
+		event = "VeryLazy",
 		config = {
 			tools = {
 				runnables = {
@@ -74,7 +74,7 @@ return {
 				svelte = {},
 				gopls = {},
 				tsserver = {},
-                tailwindcss = {},
+				tailwindcss = {},
 				-- rust_analyzer = {
 				-- 	imports = {
 				-- 		granularity = {
@@ -170,21 +170,20 @@ return {
 	},
 	-- null-ls
 	{
+		"jay-babu/mason-null-ls.nvim",
+		event = "BufReadPre",
+		cmd = { "NullInstall", "NullUninstall" },
+		config = {
+			ensure_installed = nil,
+			automatic_installation = true,
+			automatic_setup = false,
+		},
+	},
+	{
 		"jose-elias-alvarez/null-ls.nvim",
 		event = "BufReadPre",
 		keys = {
 			{ "<leader>f", vim.lsp.buf.format, { desc = "format file" } },
-		},
-		dependencies = {
-			{
-				"jay-babu/mason-null-ls.nvim",
-				cmd = { "NullInstall", "NullUninstall" },
-				config = {
-					ensure_installed = nil,
-					automatic_installation = true,
-					automatic_setup = false,
-				},
-			},
 		},
 		config = function()
 			local null_ls = require("null-ls")
