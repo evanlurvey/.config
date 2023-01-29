@@ -23,6 +23,10 @@ return {
 		config = function()
 			require("illuminate").configure({
 				delay = 50,
+                filetypes_denylist = {
+                    'fugitive',
+                    'NvimTree'
+                }
 			})
 		end,
 	},
