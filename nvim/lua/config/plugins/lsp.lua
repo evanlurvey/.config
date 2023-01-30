@@ -75,6 +75,7 @@ return {
 				gopls = {},
 				tsserver = {},
 				tailwindcss = {},
+				yamlls = {},
 				-- rust_analyzer = {
 				-- 	imports = {
 				-- 		granularity = {
@@ -251,6 +252,8 @@ return {
 					formatting.stylua,
 					formatting.black,
 					formatting.rustywind,
+					diagnostics.yamllint,
+					formatting.yamlfmt,
 				},
 			})
 		end,
