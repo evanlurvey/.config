@@ -76,6 +76,7 @@ return {
 				tsserver = {},
 				tailwindcss = {},
 				yamlls = {},
+				lua_ls = {},
 				-- rust_analyzer = {
 				-- 	imports = {
 				-- 		granularity = {
@@ -92,55 +93,6 @@ return {
 				-- 		enable = true,
 				-- 	},
 				-- },
-				sumneko_lua = {
-					single_file_support = true,
-					settings = {
-						Lua = {
-							workspace = {
-								checkThirdParty = false,
-							},
-							completion = {
-								workspaceWord = true,
-								callSnippet = "Both",
-							},
-							misc = {
-								parameters = {
-									"--log-level=trace",
-								},
-							},
-							diagnostics = {
-								-- enable = false,
-								groupSeverity = {
-									strong = "Warning",
-									strict = "Warning",
-								},
-								groupFileStatus = {
-									["ambiguity"] = "Opened",
-									["await"] = "Opened",
-									["codestyle"] = "None",
-									["duplicate"] = "Opened",
-									["global"] = "Opened",
-									["luadoc"] = "Opened",
-									["redefined"] = "Opened",
-									["strict"] = "Opened",
-									["strong"] = "Opened",
-									["type-check"] = "Opened",
-									["unbalanced"] = "Opened",
-									["unused"] = "Opened",
-								},
-								unusedLocalExclude = { "_*" },
-							},
-							format = {
-								enable = false,
-								defaultConfig = {
-									indent_style = "space",
-									indent_size = "2",
-									continuation_indent_size = "2",
-								},
-							},
-						},
-					},
-				},
 			}
 
 			local capabilities = vim.lsp.protocol.make_client_capabilities()
