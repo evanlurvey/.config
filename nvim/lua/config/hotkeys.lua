@@ -48,6 +48,6 @@ vim.keymap.set("n", "H", "<cmd>bprevious<CR>")
 
 
 -- Telescope
-vim.keymap.set("n", "<leader>F", "<cmd>Telescope live_grep<cr>")
+vim.keymap.set("n", "<leader>F", "<cmd>Telescope live_grep hidden=true<cr>")
 vim.keymap.set("n", "<leader>ss", "<cmd>Telescope spell_suggest<cr>")
 

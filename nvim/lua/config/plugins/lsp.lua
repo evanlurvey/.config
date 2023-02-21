@@ -5,6 +5,7 @@ local function on_attach(client, bufnr)
 	vim.keymap.set("n", "gi", vim.lsp.buf.implementation, { buffer = bufnr, desc = "LSP: Go to implementation" })
 	vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename, { buffer = bufnr, desc = "LSP: Rename" })
 	vim.keymap.set("n", "<leader>.", vim.lsp.buf.code_action, { buffer = bufnr, desc = "LSP: Code Action" })
+	vim.keymap.set("i", "<C-.>", vim.lsp.buf.code_action, { buffer = bufnr, desc = "LSP: Code Action" })
 	vim.keymap.set(
 		"n",
 		"gr",
@@ -77,6 +78,10 @@ return {
 				tailwindcss = {},
 				yamlls = {},
 				lua_ls = {},
+				-- yamlls = {},
+				kotlin_language_server = {},
+                pylsp = {},
+
 				-- rust_analyzer = {
 				-- 	imports = {
 				-- 		granularity = {
@@ -197,6 +202,8 @@ return {
 					--     },
 					-- }),
 					diagnostics.codespell,
+					-- FIX: I don't think this is working the way that I want it to.
+					-- I want to be able to code action spelling mistakes
 					formatting.gofmt,
 					formatting.goimports,
 					formatting.goimports_reviser,
@@ -204,8 +211,10 @@ return {
 					formatting.stylua,
 					formatting.black,
 					formatting.rustywind,
-					diagnostics.yamllint,
+					-- Yaml / CFT
 					formatting.yamlfmt,
+					diagnostics.cfn_lint,
+					diagnostics.yamllint,
 				},
 			})
 		end,
