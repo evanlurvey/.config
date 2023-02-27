@@ -16,6 +16,7 @@ function M.config()
             "go",
             "html",
             "css",
+            "scss",
             "javascript",
             "typescript",
             "lua",
