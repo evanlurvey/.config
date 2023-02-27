@@ -15,6 +15,7 @@ function M.config()
         ensure_installed = {
             "go",
             "html",
+            "css",
             "javascript",
             "typescript",
             "lua",
