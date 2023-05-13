@@ -99,7 +99,7 @@ return {
                     },
                 },
                 experimental = {
-                    ghost_text = true,
+                    ghost_text = false, -- I don't like this on with github copilot
                 },
             })
 

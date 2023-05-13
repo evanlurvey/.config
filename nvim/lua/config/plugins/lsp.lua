@@ -28,6 +28,10 @@ end
 
 return {
 	{
+		"github/copilot.vim",
+		event = "VeryLazy",
+	},
+	{
 		"williamboman/mason.nvim",
 		cmd = { "Mason" },
 		config = {},
@@ -82,6 +86,7 @@ return {
 				-- yamlls = {},
 				kotlin_language_server = {},
 				pylsp = {},
+
 				-- rust_analyzer = {
 				-- 	imports = {
 				-- 		granularity = {
@@ -142,7 +147,7 @@ return {
 		"jose-elias-alvarez/null-ls.nvim",
 		event = "BufReadPre",
 		keys = {
-			{ "<leader>f", vim.lsp.buf.format, { desc = "format file" } },
+			{ "<leader>f", function () vim.lsp.buf.format({ timeout_ms = 5000 }) end, { desc = "format file" } },
 		},
 		config = function()
 			local null_ls = require("null-ls")
@@ -183,25 +188,25 @@ return {
 						},
 					}),
 					formatting.prettier.with({
-					    filetypes = {
-					        "javascript",
-					        "javascriptreact",
-					        "typescript",
-					        "typescriptreact",
-					        "vue",
-					        "svelte",
-					        "css",
-					        "scss",
-					        "less",
-					        "html",
-					        "json",
-					        "jsonc",
-					        "yaml",
-					        "markdown",
-					        "markdown.mdx",
-					        "graphql",
-					        "handlebars",
-					    },
+						filetypes = {
+							"javascript",
+							"javascriptreact",
+							"typescript",
+							"typescriptreact",
+							"vue",
+							"svelte",
+							"css",
+							"scss",
+							"less",
+							"html",
+							"json",
+							"jsonc",
+							"yaml",
+							"markdown",
+							"markdown.mdx",
+							"graphql",
+							"handlebars",
+						},
 					}),
 					diagnostics.codespell,
 					-- FIX: I don't think this is working the way that I want it to.
