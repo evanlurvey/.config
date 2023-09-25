@@ -27,10 +27,10 @@ local function on_attach(client, bufnr)
 end
 
 return {
-	{
-		"github/copilot.vim",
-		event = "VeryLazy",
-	},
+	-- {
+	-- 	"github/copilot.vim",
+	-- 	event = "VeryLazy",
+	-- },
 	{
 		"williamboman/mason.nvim",
 		cmd = { "Mason" },
@@ -74,18 +74,46 @@ return {
 		},
 		config = function()
 			require("mason")
+			local lspconfig = require("lspconfig")
+			local configs = require("lspconfig.configs")
+			local util = require("lspconfig.util")
+
+			-- add custom templ lsp
+			configs.templ = {
+				default_config = {
+					cmd = { "templ", "lsp" },
+					filetypes = { "templ" },
+					root_dir = util.root_pattern("go.mod", ".git"),
+					settings = {},
+				},
+			}
 
 			local servers = {
+				html = {},
 				svelte = {},
 				gopls = {},
+				templ = {},
 				tsserver = {},
-				tailwindcss = {},
+				graphql = {},
+				tailwindcss = {
+					filetypes = {
+						"html",
+						"svelte",
+						"css",
+						"templ",
+						"javascript",
+						"javascriptreact",
+						"typescript",
+						"typescriptreact",
+					},
+				},
 				cssls = {},
 				yamlls = {},
 				lua_ls = {},
 				-- yamlls = {},
 				kotlin_language_server = {},
 				pylsp = {},
+				sqlls = {},
 
 				-- rust_analyzer = {
 				-- 	imports = {
@@ -113,7 +141,7 @@ return {
 				lineFoldingOnly = true,
 			}
 
-			---@type _.lspconfig.options
+			---@type lspconfig.options
 			local options = {
 				on_attach = on_attach,
 				capabilities = capabilities,
@@ -127,7 +155,7 @@ return {
 				-- if server == "tsserver" then
 				--     require("typescript").setup({ server = opts })
 				-- else
-				require("lspconfig")[server].setup(opts)
+				lspconfig[server].setup(opts)
 				-- end
 			end
 		end,
@@ -147,7 +175,13 @@ return {
 		"jose-elias-alvarez/null-ls.nvim",
 		event = "BufReadPre",
 		keys = {
-			{ "<leader>f", function () vim.lsp.buf.format({ timeout_ms = 5000 }) end, { desc = "format file" } },
+			{
+				"<leader>f",
+				function()
+					vim.lsp.buf.format({ timeout_ms = 5000 })
+				end,
+				{ desc = "format file" },
+			},
 		},
 		config = function()
 			local null_ls = require("null-ls")
@@ -204,7 +238,7 @@ return {
 							"yaml",
 							"markdown",
 							"markdown.mdx",
-							"graphql",
+							-- "graphql",
 							"handlebars",
 						},
 					}),
@@ -217,7 +251,18 @@ return {
 					formatting.jq,
 					formatting.stylua,
 					formatting.black,
-					formatting.rustywind,
+					formatting.rustywind.with({
+						filetypes = {
+							"html",
+							"svelte",
+							"css",
+							"templ",
+							"javascript",
+							"javascriptreact",
+							"typescript",
+							"typescriptreact",
+						},
+					}),
 					-- Yaml / CFT
 					formatting.yamlfmt,
 					diagnostics.cfn_lint,

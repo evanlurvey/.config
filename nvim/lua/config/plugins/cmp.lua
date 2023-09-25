@@ -76,7 +76,7 @@ return {
                 },
                 -- idk if I see a difference with the windows...
                 window = {
-                    compleation = cmp.config.window.bordered(),
+                    completion = cmp.config.window.bordered(),
                     documentation = cmp.config.window.bordered(),
                 },
                 sources = cmp.config.sources({

@@ -3,4 +3,4 @@ gcloud/
 configstore/
 .DS_Store
 .git
-
+nats/
