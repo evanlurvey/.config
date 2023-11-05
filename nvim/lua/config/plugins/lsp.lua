@@ -1,4 +1,21 @@
 local function on_attach(client, bufnr)
+	-- if client.server_capabilities.documentHighlightProvider then
+	--     vim.api.nvim_create_augroup("lsp_document_highlight", { clear = true })
+	--     vim.api.nvim_clear_autocmds({ buffer = bufnr, group = "lsp_document_highlight" })
+	--     vim.api.nvim_create_autocmd("CursorHold", {
+	--         callback = vim.lsp.buf.document_highlight,
+	--         buffer = bufnr,
+	--         group = "lsp_document_highlight",
+	--         desc = "Document Highlight",
+	--     })
+	--     vim.api.nvim_create_autocmd("CursorMoved", {
+	--         callback = vim.lsp.buf.clear_references,
+	--         buffer = bufnr,
+	--         group = "lsp_document_highlight",
+	--         desc = "Clear All the References",
+	--     })
+	-- end
+	-- vim.keymap.set("n", "<leader>f", formatCmd, { buffer = bufnr, desc = "LSP: Format file" })
 	vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = bufnr, desc = "LSP: Go to definition" })
 	vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = bufnr, desc = "LSP: Peep definition" })
 	vim.keymap.set("n", "gt", vim.lsp.buf.type_definition, { buffer = bufnr, desc = "LSP: Go to type definition" })
@@ -27,38 +44,16 @@ local function on_attach(client, bufnr)
 end
 
 return {
-	-- {
-	-- 	"github/copilot.vim",
-	-- 	event = "VeryLazy",
-	-- },
+	{
+		"github/copilot.vim",
+		event = "VeryLazy",
+	},
 	{
 		"williamboman/mason.nvim",
 		cmd = { "Mason" },
 		config = {},
 	},
-	{
-		"simrat39/rust-tools.nvim",
-		event = "VeryLazy",
-		config = {
-			tools = {
-				runnables = {
-					use_telescope = true,
-				},
-				inlay_hints = {
-					auto = true,
-					show_parameter_hints = true,
-				},
-			},
-
-			server = {
-				on_attach = on_attach,
-				settings = {
-					["rust-analyzer"] = {},
-				},
-			},
-		},
-	},
-	-- Nvim LSP
+	-- -- Nvim LSP
 	{
 		"neovim/nvim-lspconfig",
 		event = "BufReadPre",
@@ -75,18 +70,6 @@ return {
 		config = function()
 			require("mason")
 			local lspconfig = require("lspconfig")
-			local configs = require("lspconfig.configs")
-			local util = require("lspconfig.util")
-
-			-- add custom templ lsp
-			configs.templ = {
-				default_config = {
-					cmd = { "templ", "lsp" },
-					filetypes = { "templ" },
-					root_dir = util.root_pattern("go.mod", ".git"),
-					settings = {},
-				},
-			}
 
 			local servers = {
 				html = {},
@@ -105,6 +88,11 @@ return {
 						"javascriptreact",
 						"typescript",
 						"typescriptreact",
+					},
+					init_options = {
+						userLanguages = {
+							templ = "html",
+						},
 					},
 				},
 				cssls = {},
@@ -160,7 +148,7 @@ return {
 			end
 		end,
 	},
-	-- null-ls
+	-- -- null-ls
 	{
 		"jay-babu/mason-null-ls.nvim",
 		event = "BufReadPre",
@@ -245,9 +233,7 @@ return {
 					diagnostics.codespell,
 					-- FIX: I don't think this is working the way that I want it to.
 					-- I want to be able to code action spelling mistakes
-					formatting.gofmt,
 					formatting.goimports,
-					formatting.goimports_reviser,
 					formatting.jq,
 					formatting.stylua,
 					formatting.black,

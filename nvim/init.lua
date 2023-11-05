@@ -8,3 +8,5 @@ require("config.options")
 
 require("config.hotkeys")
 
+require("config.autocmd")
+

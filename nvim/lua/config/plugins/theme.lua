@@ -15,6 +15,5 @@ return {
 
         tokyonight.load()
     end,
-
 }
 

@@ -25,7 +25,8 @@ return {
 				delay = 50,
                 filetypes_denylist = {
                     'fugitive',
-                    'NvimTree'
+                    'NvimTree',
+                    'templ'
                 }
 			})
 		end,
