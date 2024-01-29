@@ -14,6 +14,7 @@ M.disabled = {
 M.telescope = {
   n = {
     ["<leader>fw"] = { "<cmd> Telescope live_grep hidden=true<CR>", "Live grep" },
+    ["<leader>ff"] = { "<cmd> Telescope find_files hidden=true<CR>", "Find files" },
   },
 }
 
@@ -29,6 +30,7 @@ M.nvterm = {
 M.nvimtree = {
   n = {
     ["<leader>tt"] = { "<cmd> NvimTreeToggle <CR>", "Toggle nvimtree" },
+    ["<leader>t."] = { "<cmd> NvimTreeFocus <CR>", "Focus nvimtree to current file" },
   },
 }
 
@@ -46,6 +48,12 @@ M.tabufline = {
         require("nvchad.tabufline").tabuflinePrev()
       end,
       "Goto prev buffer",
+    },
+    ["<C-x>"] = {
+      function()
+        require("nvchad.tabufline").close_buffer()
+      end,
+      "Close buffer",
     },
   },
 }
@@ -89,10 +97,12 @@ M.general = {
       "formatting",
     },
 
-    ["<leader>y"] = { '"+y', "yank system clipboard" },
+    ["<leader>y"] = { '"+y', "Yank to system clipboard" },
+    ["<leader>Y"] = { '"+Y', "Yank to system clipboard" },
   },
   v = {
     [">"] = { ">gv", "indent" },
+    ["<leader>y"] = { '"+y', "Yank to system clipboard" },
   },
 }
 
