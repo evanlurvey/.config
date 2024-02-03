@@ -21,3 +21,9 @@ autocmd("BufWritePre", {
     require("conform").format()
   end,
 })
+autocmd("BufWritePre", {
+  pattern = { "*.templ"  },
+  callback = function()
+    vim.cmd("!templ generate")
+  end,
+})
