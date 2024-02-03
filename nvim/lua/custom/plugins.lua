@@ -61,7 +61,7 @@ local plugins = {
 
       return config
     end,
-   },
+  },
 
   {
     "github/copilot.vim",
@@ -71,7 +71,14 @@ local plugins = {
   -- To make a plugin not be loaded
   {
     "NvChad/nvim-colorizer.lua",
-    enabled = false
+    enabled = false,
+  },
+
+  {
+    "folke/todo-comments.nvim",
+    event = "VeryLazy",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    opts = {},
   },
 
   -- All NvChad plugins are lazy-loaded by default
