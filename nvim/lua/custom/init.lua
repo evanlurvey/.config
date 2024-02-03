@@ -18,7 +18,9 @@ local autocmd = vim.api.nvim_create_autocmd
 autocmd("BufWritePre", {
   pattern = { "*.templ", "*.go" },
   callback = function()
-    require("conform").format()
+    require("conform").format({
+      timeout_ms = 3000,
+    })
   end,
 })
 autocmd("BufWritePre", {

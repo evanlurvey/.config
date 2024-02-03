@@ -53,7 +53,7 @@ local plugins = {
       local cmp = require "cmp"
       local config = require "plugins.configs.cmp"
       config.mapping["<Tab>"] = nil
-
+      config.mapping["<CR>"] = nil
       config.mapping["<C-y>"] = cmp.mapping.confirm {
         behavior = cmp.ConfirmBehavior.Insert,
         select = true,

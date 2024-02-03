@@ -96,7 +96,9 @@ M.general = {
     --  format with conform
     ["<leader>fm"] = {
       function()
-        require("conform").format()
+        require("conform").format({
+          timeout_ms = 3000,
+        })
       end,
       "formatting",
     },
