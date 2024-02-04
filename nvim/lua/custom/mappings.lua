@@ -83,6 +83,10 @@ M.lspconfig = {
       "<cmd>Telescope diagnostics<cr>",
       "List diagnostics (errors, warnings)",
     },
+    ["gr"] = {
+      "<cmd>Telescope lsp_references<cr>",
+      "List references",
+    }
   },
 }
 -- vim.keymap.set("n", "<leader>y", '"+y')
