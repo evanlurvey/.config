@@ -116,6 +116,17 @@ M.general = {
   },
 }
 
+M.tmux = {
+  plugin = true,
+  n = {
+    ["<C-h>"] = { "<cmd>TmuxNavigateLeft<CR>", "TmuxNavigateLeft" },
+    ["<C-j>"] = { "<cmd>TmuxNavigateDown<CR>", "TmuxNavigateDown" },
+    ["<C-k>"] = { "<cmd>TmuxNavigateUp<CR>", "TmuxNavigateUp" },
+    ["<C-l>"] = { "<cmd>TmuxNavigateRight<CR>", "TmuxNavigateRight" },
+    ["<C-\\>"] = { "<cmd>TmuxNavigatePrevious<CR>", "TmuxNavigatePrevious" },
+  },
+}
+
 -- more keybinds!
 
 return M

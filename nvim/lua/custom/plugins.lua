@@ -80,6 +80,17 @@ local plugins = {
     dependencies = { "nvim-lua/plenary.nvim" },
     opts = {},
   },
+  {
+    "christoomey/vim-tmux-navigator",
+    lazy = false,
+    cmd = {
+      "TmuxNavigateLeft",
+      "TmuxNavigateDown",
+      "TmuxNavigateUp",
+      "TmuxNavigateRight",
+      "TmuxNavigatePrevious",
+    },
+  },
 
   -- All NvChad plugins are lazy-loaded by default
   -- For a plugin to be loaded, you will need to set either `ft`, `cmd`, `keys`, `event`, or set `lazy = false`

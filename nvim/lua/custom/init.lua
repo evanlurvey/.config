@@ -26,6 +26,6 @@ autocmd("BufWritePre", {
 autocmd("BufWritePre", {
   pattern = { "*.templ"  },
   callback = function()
-    vim.cmd("!templ generate")
+    vim.cmd("silent !templ generate")
   end,
 })
