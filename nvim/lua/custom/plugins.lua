@@ -30,13 +30,13 @@ local plugins = {
   },
 
   -- Install a plugin
-  {
-    "max397574/better-escape.nvim",
-    event = "InsertEnter",
-    config = function()
-      require("better_escape").setup()
-    end,
-  },
+  -- {
+  --   "max397574/better-escape.nvim",
+  --   event = "InsertEnter",
+  --   config = function()
+  --     require("better_escape").setup()
+  --   end,
+  -- },
 
   {
     "stevearc/conform.nvim",
@@ -89,6 +89,13 @@ local plugins = {
       "TmuxNavigateUp",
       "TmuxNavigateRight",
       "TmuxNavigatePrevious",
+    },
+    {
+      "windwp/nvim-ts-autotag",
+      event = "InsertEnter",
+      config = function()
+        require("nvim-ts-autotag").setup()
+      end,
     },
   },
 

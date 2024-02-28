@@ -12,7 +12,7 @@ local options = {
     sh = { "shfmt" },
 
     go = { "goimports" },
-    templ = { "templ" },
+    templ = { "templ", "rustywind" },
   },
 
   -- format_on_save = {
