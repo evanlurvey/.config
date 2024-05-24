@@ -48,7 +48,9 @@ M.nvimtree = {
     enable = true,
     ignore = false,
   },
-
+  filters = {
+    custom = { "^.git$", "_templ.go$" },
+  },
   renderer = {
     highlight_git = true,
     icons = {
