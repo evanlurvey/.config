@@ -86,7 +86,23 @@ M.lspconfig = {
     ["gr"] = {
       "<cmd>Telescope lsp_references<cr>",
       "List references",
-    }
+    },
+    ["gi"] = {
+      "<cmd>Telescope lsp_implementations<cr>",
+      "List implementations",
+    },
+    ["gd"] = {
+      "<cmd>Telescope lsp_definitions<cr>",
+      "List definitions",
+    },
+    ["gs"] = {
+      "<cmd>Telescope lsp_document_symbols<cr>",
+      "List document symbols",
+    },
+    ["gS"] = {
+      "<cmd>Telescope lsp_workspace_symbols<cr>",
+      "List workspace symbols",
+    },
   },
 }
 -- vim.keymap.set("n", "<leader>y", '"+y')
