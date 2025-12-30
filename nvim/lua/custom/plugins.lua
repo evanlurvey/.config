@@ -26,7 +26,7 @@ local plugins = {
 
   {
     "nvim-tree/nvim-tree.lua",
-    dependencies = { "nvim-tree/nvim-web-devicons"},
+    dependencies = { "nvim-tree/nvim-web-devicons" },
     opts = overrides.nvimtree,
   },
 
@@ -47,7 +47,19 @@ local plugins = {
       require "custom.configs.conform"
     end,
   },
-
+  -- tinygo.nvim
+  {
+    "pcolladosoto/tinygo.nvim",
+    event = "VeryLazy",
+    config = function()
+      require("tinygo").setup {
+        -- goimports = true,
+        -- gofmt = true,
+        -- goimports_cmd = "goimports",
+        -- gofmt_cmd = "gofmt",
+      }
+    end,
+  },
   {
     "hrsh7th/nvim-cmp",
     opts = function()
@@ -67,6 +79,7 @@ local plugins = {
   {
     "github/copilot.vim",
     event = "VeryLazy",
+    enabled = false,
   },
 
   -- To make a plugin not be loaded
@@ -99,14 +112,17 @@ local plugins = {
       require("nvim-ts-autotag").setup()
     end,
   },
-
-  -- All NvChad plugins are lazy-loaded by default
-  -- For a plugin to be loaded, you will need to set either `ft`, `cmd`, `keys`, `event`, or set `lazy = false`
-  -- If you want a plugin to load on startup, add `lazy = false` to a plugin spec, for example
-  -- {
-  --   "mg979/vim-visual-multi",
-  --   lazy = false,
-  -- }
+  {
+    "stevearc/oil.nvim",
+    ---@module 'oil'
+    ---@type oil.SetupOpts
+    opts = {},
+    -- Optional dependencies
+    -- dependencies = { { "echasnovski/mini.icons", opts = {} } },
+    dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if you prefer nvim-web-devicons
+    -- Lazy loading is not recommended because it is very tricky to make it work correctly in all situations.
+    lazy = false,
+  },
 }
 
 return plugins

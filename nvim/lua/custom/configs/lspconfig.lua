@@ -1,10 +1,10 @@
 local on_attach = require("plugins.configs.lspconfig").on_attach
 local capabilities = require("plugins.configs.lspconfig").capabilities
 
-local lspconfig = require("lspconfig")
+local lspconfig = require "lspconfig"
 
 --if you just want default config for the servers then put them in a table
-local servers = { "html", "cssls", "tsserver", "clangd", "gopls", "templ" }
+local servers = { "html", "cssls", "ts_ls", "clangd", "gopls", "templ", "pylsp" }
 
 for _, lsp in ipairs(servers) do
   local opts = {
@@ -14,11 +14,17 @@ for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup(opts)
 end
 
-lspconfig["htmx"].setup({
+lspconfig["htmx"].setup {
   filetypes = { "html", "templ" },
-})
+}
 
-lspconfig["tailwindcss"].setup({
+lspconfig["elixirls"].setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  cmd = { "/Users/evanlurvey/.local/share/nvim/mason/bin/elixir-ls" },
+}
+
+lspconfig["tailwindcss"].setup {
   on_attach = on_attach,
   capabilities = capabilities,
   filetypes = {
@@ -36,7 +42,7 @@ lspconfig["tailwindcss"].setup({
       templ = "html",
     },
   },
-})
+}
 
 --
 -- lspconfig.pyright.setup { blabla}

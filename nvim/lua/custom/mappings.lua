@@ -116,12 +116,13 @@ M.general = {
     --  format with conform
     ["<leader>fm"] = {
       function()
-        require("conform").format({
+        require("conform").format {
           timeout_ms = 3000,
-        })
+        }
       end,
       "formatting",
     },
+    ["-"] = { "<CMD>Oil<CR>", "Open parent directory" },
 
     ["<leader>y"] = { '"+y', "Yank to system clipboard" },
     ["<leader>Y"] = { '"+Y', "Yank to system clipboard" },
