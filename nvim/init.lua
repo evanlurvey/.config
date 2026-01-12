@@ -7,6 +7,7 @@ vim.g.mapleader = " "
 
 -- musts
 vim.opt.number = true
+vim.opt.ignorecase = true
 vim.opt.relativenumber = true
 vim.opt.scrolloff = 4
 
@@ -50,6 +51,8 @@ vim.keymap.set("n", "<ESC>", "<CMD>nohlsearch<CR>", { desc = "Clear search highl
 vim.keymap.set({ "n", "i", "v" }, "<C-s>", "<cmd>w<CR>", { desc = "Save buffer" })
 vim.keymap.set("n", "L", "<cmd>bnext<CR>", { desc = "Next buffer" })
 vim.keymap.set("n", "H", "<cmd>bprev<CR>", { desc = "Previous buffer" })
+-- visual paste
+vim.keymap.set("v", "p", "P", { desc = "paste without registry replacement" })
 
 -- TODO: this close is not working how I want
 -- I want to reopen something I closed with ctrl-o

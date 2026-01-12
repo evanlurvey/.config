@@ -15,3 +15,6 @@ go install golang.org/x/tools/gopls@latest
 
 ### python stuff
 brew install ruff
+
+### rust stuff
+rustup component add rust-analyzer
