@@ -18,3 +18,9 @@ brew install ruff
 
 ### rust stuff
 rustup component add rust-analyzer
+
+### typescript/javascript stuff
+npm install -g typescript typescript-language-server
+
+### svelte stuff
+npm install -g svelte-language-server
